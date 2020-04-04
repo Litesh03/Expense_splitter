@@ -1,0 +1,56 @@
+<html>
+<body>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    th{ 
+        color:#ffff;
+            }
+</style>
+
+
+<table class="table table-striped">
+    <tr  class="bg-info">
+        <th>Name</th>
+        <th>Item</th>
+		<th>Date</th>
+        <th>Price</th>
+    </tr>
+
+    <tbody id="table">
+        
+    </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script> 
+var tab1 = "";
+$.get("api/v1.0/get_table", function buildTable(data, status){
+	var table = document.getElementById('table')
+	for (var i = 0; i < data.length; i++){
+		var row = `<tr>
+							<td>${data[i].name}</td>
+							<td>${data[i].item}</td>
+							<td>${data[i].date}</td>
+							<td>${data[i].price}</td>
+					  </tr>`
+		document.getElementById('table').innerHTML += row;
+	}
+})
+
+</script>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<!link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!script type = "text/javascript" 
+         src = "{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+</body>
+		 
+</html>
